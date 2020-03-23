@@ -30,15 +30,36 @@ def correct(orig, typo):
     if compare(orig, typo):
         return "0"
     for t in range(len(typo)):
-        if compare(orig, delete(typo,t)):
-            return "d"
         for u in range(len(typo)):
             if compare(orig, transpose(typo, t, u)):
                 return "t"
+            #else:
+            #    return correct2(orig, transpose(typo, t, u),"t")
         for c in charlist:
+            if compare(orig, substitute(typo, t, c)):
+                return "s"
+            #else:
+            #    return correct2(orig, substitute(typo, t, c),"s")
             if compare(orig, insert(typo, t, c)):
                 return "i"
-            elif compare(orig, substitute(typo, t, c)):
-                return "s"
+            #else:
+            #    return correct2(orig, insert(typo, t, c),"i")
+        if compare(orig, delete(typo,t)):
+            return "d"
+        #else:
+        #    return correct2(orig, delete(typo,t),"d")
     return "x"
 
+def correct2(orig, typo, step):
+    for t in range(len(typo)):
+        if compare(orig, delete(typo,t)):
+            return step + "d"
+        for u in range(len(typo)):
+            if compare(orig, transpose(typo, t, u)):
+                return step + "t"
+        for c in charlist:
+            if compare(orig, insert(typo, t, c)):
+                return step + "i"
+            elif compare(orig, substitute(typo, t, c)):
+                return step + "s"
+    return "x"

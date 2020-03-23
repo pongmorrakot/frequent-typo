@@ -2,7 +2,7 @@ import typocheck
 print("Parse CSV file")
 
 f = open("typos.csv","r")
-w = open("typocorrect.csv","a")
+w = open("typocorrect22.csv","a")
 f1 = f.readlines()
 table = ""
 for x in f1:
