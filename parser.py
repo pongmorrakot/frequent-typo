@@ -6,8 +6,8 @@ deletion = 0
 substitution = 0
 transposition = 0
 fail = 0
-f = open("typos.csv","r")
-w = open("typocorrect2.csv","a")
+f = open("train.csv","r")
+w = open("typocorrect_train.csv","a")
 f1 = f.readlines()
 table = ""
 for x in f1:
